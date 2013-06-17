@@ -1,0 +1,21 @@
+
+<script>
+	function requestFullscreenWithPointerLock () {
+
+		document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+		document.addEventListener('webkitfullscreenchange', requestPointerLock);
+
+	};
+
+	function requestPointerLock () {
+
+		// Delay the pointerlock a bit, to allow time to hover over dock
+		setTimeout(function () {
+			document.documentElement.webkitRequestPointerLock();
+    		document.removeEventListener('webkitfullscreenchange');
+    	}, 1000);
+
+    };
+</script>
+
+<button onclick="requestFullscreenWithPointerLock();">Click this button, then quickly hover over your dock.</button>
